@@ -1,63 +1,98 @@
-body {
-  margin-top: calc(125px + 2em);
-  font-family: Comfortaa, sans-serif;
-  margin: 0;
-  margin-top: calc(125px + 1em);
-  height: 100vh;
-  width: 100vw;
+@import url("vars.css");
+@import url("helpers.css");
 
-  background-color: beige;
-  font-size: 24px;
+body {
+	font-family: Comfortaa, sans-serif;
+	margin: 0;
+	height: 100vh;
+	width: 100vw;
+
+	background-color: var(--keepnote-bg);
+	font-size: 24px;
+}
+
+a {
+	text-decoration: none;
 }
 
 .flex-row-center {
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	gap: 1em;
+	justify-content: center;
+	align-items: center;
 }
 
 .flex-column {
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+	display: flex;
+	gap: 1em;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
-.container {
-  font-family: inherit;
-  padding: 1.2em;
+.card {
+	font-family: inherit;
 
-  border-radius: 1em;
-  background-color: whitesmoke;
-  font-size: 1em;
+	border-radius: 12px;
+	font-size: 1em;
 
-  box-shadow: 0px 6px 6px #00000029;
+	box-shadow: var(--keepnote-card-box-shadow);
 }
 
-form > input, form > textarea, form > button {
-  font-family: inherit;
-  width: 400px;
-  border-radius: 1em;
-  padding: 1em;
-  border: #00000005;
-  box-shadow: 0px 2px 3px #00000029;
+.card-login {
+	padding: 1.2em;
+	background-color: var(--keepnote-secondary);
+	width: 600px;
 }
 
-form > button, button {
-  box-sizing: content-box;
-  font-weight: 600;
+.card .header {
+	font-size: 2.8em;
+}
+
+
+.card .input {
+	font-family: inherit;
+	font-size: 1em;
+	font-weight: 600;
+	width: 400px;
+	padding: 1em;
+	border: 1px solid var(--keepnote-text);
+	border-radius: 7px;
+
+	color: var(--keepnote-text);
+	transition: all 2s ease-in-out;
+}
+
+.card .button {
+	font-family: inherit;
+	font-size: 1em;
+	background-color: var(--keepnote-accent);
+	width: 330px;
+	height: 64px;
+	font-weight: 600;
+	border-radius: 50px;
+	border: none;
+
+	color: var(--keepnote-bg);
+}
+
+.card .button:hover {
+	background-color: var(--keepnote-text);
+	color: var(--keepnote-accent);
+}
+
+.card .login-note {
+	font-size: 0.7em;
 }
 
 @media screen and (max-width: 414px) {
-  form, .container {
-      width: 100%;
-  }
+	form, .container {
+			width: 100%;
+	}
 
-  form > input,
-  form > textarea,
-  form > button {
-      width: calc(100% - 1em);
-  }
+	form > input,
+	form > textarea,
+	form > button {
+			width: calc(100% - 1em);
+	}
 }

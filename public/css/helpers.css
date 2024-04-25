@@ -1,0 +1,3 @@
+@import url("vars.css");
+
+.highlight { color: var(--keepnote-accent); }
