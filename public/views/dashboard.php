@@ -1,3 +1,8 @@
+<?php 
+require_once './src/enums/Subpages.php';
+$subpage = Subpages::NOTES;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,17 +15,11 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-		<title>Dashboard</title>
+		<title>KeepNote - Dashboard</title>
 	</head>
 
 	<body>
-		<nav class="flex-row-center">
-			<a href="#"><i class="fas fa-home"></i> Home</a>
-			<a href="#"><i class="fas fa-search"></i> Search</a>
-			<a href="#"><i class="fas fa-user"></i> Profile</a>
-			<a href="#"><i class="fas fa-envelope"></i> Messages</a>
-			<a href="#"><i class="fas fa-cog"></i> Settings</a>
-		</nav>
+		<?php include __DIR__ . '/shared/navbar.php';?>
 
 		<h1> Dashboard </h1>
 
