@@ -12,7 +12,7 @@
 <body class="flex-row-center">
 	<div class="card card-login flex-column" style="width:80vw">
 		<h1 class="header">Page <span class="highlight">not</span> found</h1>
-    <div class="flex-row-center">If anything should be there, contact site administrator :)</div>
+    <div class="flex-row-center">If anything should be there, contact site administrator 🙂</div>
 	</div>
 </body>
 </html>
