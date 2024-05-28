@@ -1,50 +1,137 @@
 #navbar-container {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+}
+
+#navbar-burger {
+	display: none;
+}
+
+#navbar-title {
+	display: none;
 }
 
 #navbar {
-  display: flex;
-  gap: 0;
+	display: flex;
+	gap: 0;
 
-  position: sticky;
-  height: 60px;
-  width: fit-content;
+	position: sticky;
+	height: 60px;
+	width: fit-content;
 
-  background-color: var(--keepnote-bg);
-  border-radius: 0 0 20px 20px;
-  box-shadow: 1px 1px 2px #00000040;
+	background-color: var(--keepnote-bg);
+	border-radius: 0 0 20px 20px;
+	box-shadow: 1px 1px 2px #00000040;
 }
 
 #navbar .option {
-  display: flex;
-  min-width: 100px;
-  height: 100%;
-  align-items: center;
-  padding: 0 1em;
-  text-decoration: none;
+	display: flex;
+	min-width: 100px;
+	height: 100%;
+	align-items: center;
+	padding: 0 1em;
+	text-decoration: none;
 }
 
 #navbar .option, #navbar .option:active, #navbar .option:visited {
-  color: var(--keepnote-text);
+	color: var(--keepnote-text);
 }
 
 #navbar .option i {
-  padding-right: .5em;
+	padding-right: .5em;
 }
 
 #navbar .option:nth-child(1) {
-  border-radius: 0 0 0 20px;
+	border-radius: 0 0 0 20px;
 }
 
 #navbar .option:nth-last-child(1) {
-  border-radius: 0 0 20px 0;
+	border-radius: 0 0 20px 0;
 }
 
 #navbar .option.selected {
-  background-color: var(--keepnote-secondary);
-  font-weight: 700;
-  color: var(--keepnote-accent);
+	background-color: var(--keepnote-secondary);
+	font-weight: 700;
+	color: var(--keepnote-accent);
 }
 
+@media screen and (max-width: 960px) {
+	#navbar-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 60vw;
+		flex-direction: column;
+		justify-content: flex-start;
+		background-color: var(--keepnote-secondary);
+		align-items: center;
+
+		transition: left 250ms ease-in-out;
+
+		overflow: hidden;
+		z-index: 10;
+	}
+
+	#navbar-container.hidden {
+		left: -100vw;
+	}
+
+	#navbar-tint {
+		position: absolute;
+		display: block;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		background-color: #000;
+		opacity: .25;
+
+		transition: opacity 250ms ease-in-out;
+
+		overflow: hidden;
+		z-index: 3;
+	}
+
+	#navbar-tint.hidden {
+		opacity: 0;
+	}
+
+	#navbar-burger {
+		display: inline;
+		position: absolute;
+		top: 1em;
+		left: 1em;
+
+		z-index: 5;
+	}
+
+	#navbar-title {
+		display: inline-block;
+		padding: 2em 0;
+		height: 10%;
+		text-align: center;
+		font-size: 1.75em;
+	}
+
+	#navbar {
+		position: relative;
+		flex-direction: column;
+
+		height: fit-content;
+		gap: 1em;
+
+		background-color: unset;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	#navbar .option {
+		display: flex;
+		min-width: 100px;
+		height: auto;
+		align-items: center;
+		padding: 0 1em;
+		text-decoration: none;
+	}
+}
