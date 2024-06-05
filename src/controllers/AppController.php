@@ -2,6 +2,23 @@
 require_once CONTROLLERS_PATH . 'IController.php';
 
 class AppController implements Controller {
+
+	protected Model $model; 
+
+	protected function isLoggedIn() : bool {
+		session_start();
+
+		if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) return true;
+		
+		print $this->getTemplateData('not_logged_in', []);
+		return false;
+	}
+
+	public function handle(string $handler, string &$template = null, array &$variables = []) {
+		if(!$this->isLoggedIn()) return;
+		$this->render($template, $variables);
+	}
+
 	public function render(string $template = null, array $variables = []) {
 		$output = $this->getTemplateData($template, $variables);
 		print $output;
@@ -32,4 +49,7 @@ class AppController implements Controller {
 			print($e->getMessage());
 		}
 	}
+
+	protected function isPost() : bool { return $_SERVER['REQUEST_METHOD'] == 'POST'; }
+	protected function isGet() : bool { return $_SERVER['REQUEST_METHOD'] == 'GET'; }
 }
