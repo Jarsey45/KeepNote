@@ -5,4 +5,5 @@ ENV POSTGRES_DB db
 ENV POSTGRES_USER docker
 
 COPY . /app/database
-ADD schema.sql /docker-entrypoint-initdb.d
+ADD ./init/init_schema.sql /docker-entrypoint-initdb.d/init.sql
+RUN chmod a+r /docker-entrypoint-initdb.d/*
