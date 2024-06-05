@@ -2,6 +2,7 @@
 @import url("helpers.css");
 
 body {
+	position: relative;
 	font-family: Comfortaa, sans-serif;
 	margin: 0;
 	height: 100vh;
@@ -9,6 +10,7 @@ body {
 
 	background-color: var(--keepnote-bg);
 	font-size: 24px;
+	overflow-y: hidden;
 }
 
 a {

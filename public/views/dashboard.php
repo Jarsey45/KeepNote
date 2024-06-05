@@ -14,6 +14,7 @@ $subpage = isset($subpage) ? Subpages::from($subpage) : Subpages::NOTES;
 			switch($subpage) {
 				case Subpages::NOTES: 
 					print('<link rel="stylesheet" href="' . STYLES_PATH . 'notes.css">');
+					print('<link rel="stylesheet" href="' . STYLES_PATH . 'note_button.css">');
 					break;
 				default: break;
 			}
