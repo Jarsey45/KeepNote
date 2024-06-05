@@ -13,8 +13,8 @@
 	<div class="card card-login flex-column">
 		<h1 class="header">Keep<span class="highlight">Note</span></h1>
 		<form action="/login" method="POST" class="flex-column">
-			<input class="input" type="email" placeholder="email">
-			<input class="input" type="password" placeholder="password">
+			<input class="input" type="email" name="email" placeholder="email">
+			<input class="input" type="password" name="password" placeholder="password">
 			<a class="login-note" style="align-self:end;" href="/forgot-password">Forgot password?</a>
 			<button class="button" type="submit">Login</button>
 			<div class="login-note">No account yet? <a class="highlight" href="/register">Create new!</a></div>

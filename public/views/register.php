@@ -13,9 +13,9 @@
 	<div class="card card-login flex-column">
 		<h1 class="header">Keep<span class="highlight">Note</span></h1>
 		<form action="/register" method="POST" class="flex-column">
-			<input class="input" type="email" placeholder="email">
-			<input class="input" type="password" placeholder="password">
-			<input class="input" type="password" placeholder="confirm password">
+			<input class="input" type="email" name="email" placeholder="email">
+			<input class="input" type="password" name="password" placeholder="password">
+			<input class="input" type="password" name="confirm_password" placeholder="confirm password">
 			<button class="button" type="submit">Register</button>
 			<div class="login-note">Already have an account? <a class="highlight" href="/login">Log in</a></div>
 		</form>

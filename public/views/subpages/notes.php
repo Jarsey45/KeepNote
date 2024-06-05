@@ -1,8 +1,9 @@
 <div id="notes-container">
-  <?php 
-  $n = 25;
-  for($i = 1; $i <= $n; $i++):
+  <?php
+  foreach($notes as $note):
     include VIEWS_PATH . 'components/note.php';
-  endfor;
+  endforeach;
   ?>
 </div>
+
+<?php include VIEWS_PATH . 'shared/note_button.php'; ?>
