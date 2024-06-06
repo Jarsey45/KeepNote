@@ -36,11 +36,21 @@ class AccountController extends AppController {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $user = $this->model->findOne(['email' => $email])[0];
-    if(!$user) return;
+    $user = $this->model->findOne(['email' => $email]);
+    $user = empty($user) ? [] : $user[0];
+    if(!$user) {
+      $this->render(Pages::LOGIN->value, ['messages' => ['User not found!']]);
+      die();
+    }
+
+    if($user->getPassword() !== $password) { // TODO: should not work like this, placeholder
+      $this->render(Pages::LOGIN->value, ['messages' => ['Wrong password!']]);
+      die();
+    }
 
     session_start();
     $_SESSION['logged_in'] = true;
+    $_SESSION['user_id'] = $user->getId();
 
     header("Location: http://{$_SERVER['HTTP_HOST']}/dashboard");
     die();

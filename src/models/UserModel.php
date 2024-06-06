@@ -24,4 +24,17 @@ class UserModel extends Model {
 
     return $resultArray;
   }
+
+  protected function getUpdateStatement() : string {
+    return <<<STMT
+      username = :username, email = :email, password = :password, id_role = :id_role, date_created = :date_created
+    STMT;
+  }
+
+  protected function getInsertStatement() : string {
+    return <<<STMT
+      (username, email, password, id_role, date_created)
+      VALUES (:username, :email, :password, :id_role, :date_created)
+    STMT;
+  }
 }

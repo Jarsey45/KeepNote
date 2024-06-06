@@ -1,9 +1,9 @@
 <?php 
 
 require_once CLASSES_PATH . 'IClassObject.php';
+require_once CLASSES_PATH . 'AbstractClassObject.php';
 
-class User implements IClassObject {
-  private int $id;
+class User extends AbstractClassObject implements IClassObject {
   private string $username;
   private string $password;
   private string $email;
@@ -19,5 +19,13 @@ class User implements IClassObject {
     $this->date_created = $date_created;
   }
 
-  public function getId() : int { return $this->id; }
+  public function getUsername() { return $this->username; }
+
+  public function getPassword() { return $this->password; }
+
+  public function getEmail() { return $this->email; }
+
+  public function getRole() { return $this->role; }
+
+  public function getDateCreated() { return $this->date_created; }
 }

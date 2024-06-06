@@ -24,4 +24,17 @@ class NoteModel extends Model {
     return $resultArray;
   }
   
+
+  protected function getUpdateStatement() : string {
+    return <<<STMT
+      id_owner = :id_owner, title = :title, content = :content, color = :color, date_created = :date_created
+    STMT;
+  }
+
+  protected function getInsertStatement() : string {
+    return <<<STMT
+      (id_owner, title, content, color, date_created)
+      VALUES (:id_owner, :title, :content, :color, :date_created);
+    STMT;
+  }
 }

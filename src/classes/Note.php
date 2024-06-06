@@ -1,9 +1,9 @@
 <?php
 
 require_once CLASSES_PATH . 'IClassObject.php';
+require_once CLASSES_PATH . 'AbstractClassObject.php';
 
-class Note implements IClassObject {
-  private int $id;
+class Note extends AbstractClassObject implements IClassObject {
   private int $owner;
   private string $title;
   private string $content;
@@ -20,6 +20,8 @@ class Note implements IClassObject {
   }
 
   public function getId() : int { return $this->id; }
+
+  public function getOwner() : int { return $this->owner; }
 
   public function getTitle() : string { return $this->title; }
 

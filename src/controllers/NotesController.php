@@ -13,6 +13,7 @@ class NotesController extends AppController {
     if(!$this->isLoggedIn()) return;
     $variables['notes'] = $this->model->findAll();
 
+
 		$this->render($template, $variables);
 	}
 
@@ -21,7 +22,15 @@ class NotesController extends AppController {
 		print $output;
 	}
 
-  private function getNotesForUser() {
+  private function notes() {
+
+  }
+
+  private function sharedNotes() {
+
+  }
+
+  private function account() {
 
   }
 }
