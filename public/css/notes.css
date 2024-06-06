@@ -53,6 +53,12 @@
   top: .75em;
 
   color: rgba(53, 73, 94, 0.7);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.note-options:hover {
+  background-color: #0000000f;
 }
 
 .note-content {
@@ -78,6 +84,49 @@
   font-size: .6em;
   color: rgba(53, 73, 94, 0.7);
 }
+
+.note-options-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: .5em;
+  top: 2em;
+  width: 50%;
+  height: 50%;
+
+  border-radius: 15px;
+  box-shadow: var(--keepnote-card-box-shadow);
+  background-color: var(--keepnote-secondary);
+  align-items: center;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+
+  transition: all 150ms ease-in-out;
+}
+
+.note-options-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.note-options-container .note-options-option {
+  display: flex;
+  flex: 1;
+  width: 100%;
+
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.note-options-container .note-options-option:hover {
+  color: var(--keepnote-accent);
+  background-color: var(--keepnote-bg);
+}
+
 
 @media screen and (max-width: 960px) {
   #notes-container {

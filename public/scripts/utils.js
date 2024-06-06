@@ -1,10 +1,15 @@
 /**
  * Finds target element  and toggles class
- * @param {string} target query selector of target
+ * @param {string|HTMLElement} target query selector of target
  * @param {string} className class to toggle
  * @returns {void}
  */
 export function toggleClass(target, className) {
+  if(target instanceof HTMLElement) { 
+    target.classList.toggle(className);
+    return;
+  }
+
   const element = document.querySelector(target);
   if(element === null) return;
 
@@ -44,4 +49,16 @@ export function setInputValue(element, value = '') {
   if(typeof element === 'string')
     element = document.querySelector(element);
   element.value = value;
+}
+
+/**
+ * Get parent element
+ * @param {HTMLElement} element child element
+ * @returns {ParentNode|null}
+ */
+export function getParentElement(element) {
+  if (!element || !element.parentNode) {
+    return null;
+  }
+  return element.parentNode;
 }

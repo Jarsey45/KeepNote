@@ -1,0 +1,20 @@
+@import url("vars.css");
+
+#toasts-container {
+  position: absolute;
+  width: 15%;
+  height: 1em;
+  bottom: 2em;
+
+  padding: 1em;
+  background-color: var(--keepnote-error-color);
+  border-radius: 50px;
+  box-shadow: var(--keepnote-card-box-shadow);
+}
+
+#toasts-container .toast {
+  height: 100%;
+
+  font-size: .75em;
+  font-family: var(--keepnote-text-family);
+}
