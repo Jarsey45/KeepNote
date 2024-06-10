@@ -1,7 +1,7 @@
 <div id="toasts-container">
-  <?php 
+  <?php
   foreach($messages as $message) {
     include VIEWS_PATH . 'components/toast.php';
-   }
+  }
   ?>
 </div>

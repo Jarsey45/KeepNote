@@ -3,7 +3,7 @@ require_once './src/enums/Subpages.php';
 require_once './src/utils.php';
 require_once MODELS_PATH . 'NoteModel.php';
 
-class AccountController extends AppController {
+class SharedNotesController extends AppController {
 
   public function __construct() {
     $this->model = new NoteModel();
@@ -11,7 +11,7 @@ class AccountController extends AppController {
 
   public function handle(string $handler, string &$template = null, array &$variables = []) {
     if(!$this->isLoggedIn()) return;
-    $variables['subpage'] = Subpages::ACCOUNT_USER->value;
+    $variables['subpage'] = Subpages::SHARED_NOTES->value;
 		$this->render('/dashboard', $variables);
 	}
 
@@ -20,7 +20,7 @@ class AccountController extends AppController {
 		print $output;
 	}
 
-  private function account() {
-
+  private function getSharedNotes() {
+    // $this->model->find();
   }
 }

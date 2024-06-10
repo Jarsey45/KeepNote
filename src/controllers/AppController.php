@@ -50,6 +50,25 @@ class AppController implements Controller {
 		}
 	}
 
+	protected function sendResponse($data, $httpHeaders = []){
+		if (is_array($httpHeaders) && count($httpHeaders)) {
+			foreach ($httpHeaders as $httpHeader) {
+				header($httpHeader);
+			}
+		}
+
+		echo $data;
+		die();
+	}
+
+	protected function parseJSONRequest() : array {
+		if($_SERVER['CONTENT_TYPE'] !== 'application/json') {
+			http_response_code(400);
+			$this->sendResponse(['error' => 'Bad Request'], 'HTTP/1.1 400 Bad Request');
+		}
+		return json_decode(file_get_contents('php://input') ?? [], true);
+	}
+
 	protected function isPost() : bool { return $_SERVER['REQUEST_METHOD'] == 'POST'; }
 	protected function isGet() : bool { return $_SERVER['REQUEST_METHOD'] == 'GET'; }
 }

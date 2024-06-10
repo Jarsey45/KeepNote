@@ -17,12 +17,40 @@ export function toggleClass(target, className) {
 }
 
 /**
+ * Finds target element  and toggles class
+ * @param {string|HTMLElement} target query selector of target
+ * @param {string} className class to toggle
+ * @param {bool} value should class be removed or added
+ * @returns {void}
+ */
+export function changeClass(target, className, value) {
+  if(target instanceof HTMLElement) {
+    if(value)
+      target.classList.add(className);
+    else
+      target.classList.remove(className);
+    return;
+  }
+
+  const element = document.querySelector(target);
+  if(element === null) return;
+
+  if(value)
+    element.classList.add(className);
+  else
+    element.classList.remove(className);
+}
+
+/**
  * Checks if element has certain class
- * @param {string} target query selector of target 
+ * @param {HTMLElement|string} target query selector of target or HTML element
  * @param {string} className class to chec 
  * @returns {boolean} true if element has class, false otherwise
  */
 export function hasClass(target, className) {
+  if(target instanceof HTMLElement)
+    return target.classList.contains(className);
+
   const element = document.querySelector(target);
   if(element === null) return false;
 

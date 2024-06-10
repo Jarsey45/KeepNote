@@ -2,7 +2,7 @@
 
 enum Subpages : string {
   case NOTES = 'notes';
-  case SHARED_NOTES = 'shared_notes';
+  case SHARED_NOTES = 'shared';
   case ACCOUNT_USER = 'account_user';
   case ACCOUNT_ADMIN = 'account_admin';
   case ADMIN_MANAGE_NOTES = 'admin_manage_notes';

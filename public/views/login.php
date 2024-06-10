@@ -21,6 +21,9 @@
 			<div class="login-note">No account yet? <a class="highlight" href="/register">Create new!</a></div>
 		</form>
 	</div>
-	<?php include VIEWS_PATH . 'shared/toasts.php' ?>
+	<?php 
+	if(isset($message) && !empty($messages))
+		include VIEWS_PATH . 'shared/toasts.php'
+	?>
 </body>
 </html>

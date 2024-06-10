@@ -20,5 +20,9 @@
 			<div class="login-note">Already have an account? <a class="highlight" href="/login">Log in</a></div>
 		</form>
 	</div>
+	<?php 
+	if(isset($message) && !empty($messages))
+		include VIEWS_PATH . 'shared/toasts.php'
+	?>
 </body>
 </html>

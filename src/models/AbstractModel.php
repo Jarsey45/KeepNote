@@ -11,7 +11,7 @@ abstract class Model {
   abstract protected function getUpdateStatement() : string;
   abstract protected function getInsertStatement() : string;
 
-  public function update(int $id, IDatabasePersistable $data) : bool { 
+  public function update(IDatabasePersistable $data) : bool { 
     $conn = DatabaseClientFactory::getFactory()->getConnection();
 
     $sql = <<<QUERY
@@ -24,7 +24,7 @@ abstract class Model {
     return $stmt->execute($data->getDBQueryBindings());
   }
 
-  public function insert(int $id, IDatabasePersistable $data) : bool {
+  public function insert(IDatabasePersistable $data) : bool {
     $conn = DatabaseClientFactory::getFactory()->getConnection();
 
     $sql = <<<QUERY
@@ -51,7 +51,7 @@ abstract class Model {
     return $this->castToClass($stmt->fetchAll(PDO::FETCH_ASSOC));
   }
 
-  public function findOne(array $conditions) : array {
+  public function find(array $conditions) : array {
     $conn = DatabaseClientFactory::getFactory()->getConnection();
 
     $whereClause = $this->createPreparedWhereClause($conditions);
@@ -83,7 +83,7 @@ abstract class Model {
   }
 
 
-  private function createPreparedWhereClause(array $conditions): string {
+  protected function createPreparedWhereClause(array $conditions): string {
     if (empty($conditions)) {
       return '1=1';
     }

@@ -6,8 +6,8 @@
 </div>
 
 <div id="note-add-container" class="hidden">
-  <input class="title" type="text" id="note-add-title" placeholder="title"/>
+  <input class="title" type="text" id="note-add-title" placeholder="Your note title" maxlength="50"/>
   <textarea class="content" type="text" 
     id="note-add-content" maxlength="500" rows="50" 
-    placeholder="type anything you want (●'◡'●)..."></textarea>
+    placeholder="type anything you want (●'◡'●) ..."></textarea>
 </div>

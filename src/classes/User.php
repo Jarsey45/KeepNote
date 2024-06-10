@@ -19,6 +19,7 @@ class User extends AbstractClassObject implements IClassObject {
     $this->date_created = $date_created;
   }
 
+  //TODO: html content sanitization
   public function getUsername() { return $this->username; }
 
   public function getPassword() { return $this->password; }
@@ -27,5 +28,13 @@ class User extends AbstractClassObject implements IClassObject {
 
   public function getRole() { return $this->role; }
 
-  public function getDateCreated() { return $this->date_created; }
+  //TODO: html content sanitization
+  public function getDateCreated() { 
+    try {
+      $dateObj = new DateTime($this->date_created);
+      return $dateObj->format('d M Y');
+    } catch (Exception $e) {
+      return $this->date_created;
+    }
+  }
 }

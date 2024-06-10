@@ -2,8 +2,14 @@
 
 require_once CLASSES_PATH . 'IDatabasePersistable.php';
 
-class AbstractClassObject implements IDatabasePersistable {
+#[Attribute]
+class PersistableProperty {
+  public function __construct(public bool $includeInBindings = false) {}
+}
 
+abstract class AbstractClassObject implements IDatabasePersistable {
+
+  #[PersistableProperty(true)]
   protected int $id;
 
   public function getId() : int { return $this->id; }
@@ -13,9 +19,17 @@ class AbstractClassObject implements IDatabasePersistable {
     $properties = $reflection->getProperties(ReflectionProperty::IS_PRIVATE);
 
     $bindings = [];
-    foreach($properties as $prop) {
+    foreach ($properties as $prop) {
       $propName = $prop->getName();
-      $bindings[":$propName"] = $this->{$propName};
+      $prop->setAccessible(true);
+
+      $annotation = $prop->getAttributes(PersistableProperty::class)[0] ?? null;
+
+      if ($annotation && $annotation->newInstance()->includeInBindings) {
+        $bindings[":$propName"] = $prop->getValue($this);
+      }
+
+      $prop->setAccessible(false);
     }
 
     return $bindings;
