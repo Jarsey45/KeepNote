@@ -12,9 +12,14 @@ $subpage = isset($subpage) ? Subpages::from($subpage) : Subpages::NOTES;
 		<link rel="stylesheet" href="<?=STYLES_PATH?>nav.css">
 		<?php
 			switch($subpage) {
-				case Subpages::NOTES: 
+				case Subpages::NOTES:
+				case Subpages::SHARED_NOTES:
 					print('<link rel="stylesheet" href="' . STYLES_PATH . 'notes.css">');
 					print('<link rel="stylesheet" href="' . STYLES_PATH . 'note_button.css">');
+					break;
+				case Subpages::ACCOUNT_USER :
+					print('<link rel="stylesheet" href="' . STYLES_PATH . 'notes.css">');
+					print('<link rel="stylesheet" href="' . STYLES_PATH . 'account.css">');
 					break;
 				default: break;
 			}

@@ -4,10 +4,19 @@ require_once CLASSES_PATH . 'IClassObject.php';
 require_once CLASSES_PATH . 'AbstractClassObject.php';
 
 class User extends AbstractClassObject implements IClassObject {
+
+	#[PersistableProperty(true)]
 	private string $username;
+
+	#[PersistableProperty(true)]
 	private string $password;
+
+	#[PersistableProperty(true)]
 	private string $email;
+
+	#[PersistableProperty(true)]
 	private Roles $role;
+
 	private string $date_created;
 
 	public function __construct(int $id, string $username, string $password, string $email, Roles $role, string $date_created) {

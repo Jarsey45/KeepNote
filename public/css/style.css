@@ -87,6 +87,55 @@ a {
 	font-size: 0.7em;
 }
 
+#table {
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	max-height: 75%;
+	width: 80%;
+	margin: 4em auto;
+
+	border-radius: 30px;
+	overflow: hidden;
+	background-color: var(--keepnote-secondary);
+}
+
+#table #table-header {
+	display: flex;
+	flex-direction: row;
+	
+	font-size: 1em;
+	font-weight: 700;
+	background-color: var(--keepnote-accent);
+}
+
+#table .table-row {
+	display: flex;
+	flex-direction: row;
+}
+
+#table .table-cell {
+	flex: 1;
+	padding: 1em;
+
+	border-top: 1px solid var(--keepnote-bg);
+}
+
+.table-cell:not(:last-child) {
+	border-right: 1px solid var(--keepnote-bg);
+}
+
+.table-cell:last-child {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.table-cell .icon {
+	color: red;
+	cursor: pointer;
+}
+
 @media screen and (max-width: 414px) {
 	form, .container {
 			width: 100%;

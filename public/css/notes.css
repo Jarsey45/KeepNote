@@ -1,6 +1,6 @@
 @import url("vars.css");
 
-#notes-container {
+#notes-container, .notes-shared {
 	display: flex;
 	box-sizing: border-box;
 	width: 100%;
@@ -13,6 +13,23 @@
 	align-content: flex-start;
 	justify-content: center;
 	overflow-y: hidden;
+}
+
+.notes-shared {
+	height: 100%;
+	width: auto;
+	position: relative;
+	padding: 0 1em 0 0;
+	border-right: hsl(211deg 28% 29% / 27%) 2px solid;
+	overflow: visible;
+}
+
+.notes-shared .notes-shared-title {
+	position: absolute;
+	top: -1em;
+	left: 2em;
+
+	font-size: 1.25em
 }
 
 .note {

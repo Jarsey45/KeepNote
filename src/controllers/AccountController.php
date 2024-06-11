@@ -6,12 +6,26 @@ require_once MODELS_PATH . 'NoteModel.php';
 class AccountController extends AppController {
 
 	public function __construct() {
-		$this->model = new NoteModel();
+		$this->model = new UserModel();
 	}
 
 	public function handle(string $handler, string &$template = null, array &$variables = []) {
 		if(!$this->isLoggedIn()) return;
-		$variables['subpage'] = Subpages::ACCOUNT_USER->value;
+		if($this->isPost()) return $this->handlePost();
+
+		$subpage = Subpages::from($handler) ?? Subpages::ACCOUNT_USER;
+		$variables['subpage'] = $subpage->value;
+		
+		switch($subpage) {
+			case Subpages::ACCOUNT_ADMIN:
+				$variables['users'] = $this->getAccounts();
+				break;
+			case Subpages::ACCOUNT_USER:
+				$variables['user'] = $this->getAccountInfo();
+				break;
+			default: break;
+		}
+
 		$this->render('/dashboard', $variables);
 	}
 
@@ -20,7 +34,42 @@ class AccountController extends AppController {
 		print $output;
 	}
 
-	private function account() {
+	private function handlePost() {
+		$request = $this->parseJSONRequest();
 
+		$action = isset($request['action']) ? PostActions::from($request['action']) : PostActions::NONE;
+		$data = $request['data'];
+		$headers = [];
+		
+		switch($action) {
+			case PostActions::DELETE:
+				$response = $this->deleteAccount($data);
+				break;
+			default:
+				$response = "No action available"; //TODO: send some header
+				break;
+		}
+		
+		$this->sendResponse($response, $headers); //TODO: better response from server
+	}
+
+	private function getAccountInfo() : User|null {
+		if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
+			$user = $this->model->find(['id' => (int) $_SESSION['user_id']]);
+			if($user[0] instanceof User)
+				return $user[0];
+		}
+		return null;
+	}
+
+	private function getAccounts() : array {
+		$users = $this->model->findAll();
+		return !empty($users) ? $users : [];
+	}
+
+	private function deleteAccount($data) : bool {
+		if (!isset($data['id']))
+			return false;
+		return $this->model->delete((int) $data['id']);
 	}
 }

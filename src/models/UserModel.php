@@ -25,6 +25,8 @@ class UserModel extends Model {
 		return $resultArray;
 	}
 
+	//TODO: cascade delete notes for user #[Override]
+
 	protected function getUpdateStatement() : string {
 		return <<<STMT
 			username = :username, email = :email, password = :password, id_role = :id_role, date_created = :date_created

@@ -13,6 +13,12 @@
 			href="/<?= Subpages::SHARED_NOTES->value ?>">
 			<i class="fa fa-share-alt"></i>Shared
 		</a>
+		<?php if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === Roles::ADMIN): ?>
+			<a class="option <?= $subpage === Subpages::ACCOUNT_ADMIN ? 'selected' : '' ?>"
+			href="/<?= Subpages::ACCOUNT_ADMIN->value ?>">
+			<i class="fa fa-users"></i>Manage
+			</a>
+		<?php endif; ?>
 		<a class="option <?= $subpage === Subpages::ACCOUNT_USER ? 'selected' : '' ?>"
 			href="/<?= Subpages::ACCOUNT_USER->value ?>">
 			<i class="fas fa-user"></i>Account

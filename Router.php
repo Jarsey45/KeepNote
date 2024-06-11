@@ -14,6 +14,7 @@ class Router {
 		$this->addRoute('/' . Subpages::NOTES->value, new NotesController());
 		$this->addRoute('/' . Subpages::SHARED_NOTES->value, new SharedNotesController());
 		$this->addRoute('/' . Subpages::ACCOUNT_USER->value, new AccountController());
+		$this->addRoute('/' . Subpages::ACCOUNT_ADMIN->value, new AccountController());
 		$this->addRoute('/register', new AuthController());
 		$this->addRoute('/login', new AuthController());
 	}

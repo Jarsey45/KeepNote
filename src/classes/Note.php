@@ -50,7 +50,7 @@ class Note extends AbstractClassObject implements IClassObject {
 
 	public function getId() : int { return $this->id; }
 
-	public function getOwner() : int { return $this->owner; }
+	public function getOwner() : int { return $this->id_owner; }
 
 	//TODO: html content sanitization
 	public function getTitle() : string { return $this->title; }

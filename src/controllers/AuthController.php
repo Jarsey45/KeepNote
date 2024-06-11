@@ -51,6 +51,7 @@ class AuthController extends AppController {
 		session_start();
 		$_SESSION['logged_in'] = true;
 		$_SESSION['user_id'] = $user->getId();
+		$_SESSION['user_role'] = $user->getRole();
 
 		header("Location: http://{$_SERVER['HTTP_HOST']}/" . Subpages::NOTES->value);
 		die();
@@ -60,6 +61,13 @@ class AuthController extends AppController {
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		$confirm_password = $_POST['confirm_password'];
+
+		if($password !== $confirm_password) {
+			$this->render(Pages::REGISTER->value, ['messages' => ['Passwords are not the same!']]);
+			die();
+		}
+
+		$user = new User();
 
 
 
