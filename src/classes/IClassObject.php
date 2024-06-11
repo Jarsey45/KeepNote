@@ -2,6 +2,6 @@
 
 interface IClassObject {
 
-  function getId() : int;
+	function getId() : int;
 
 }

@@ -1,3 +1,3 @@
 <div class="toast flex-row-center">
-  <?=$message?>
+	<?=$message?>
 </div>

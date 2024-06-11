@@ -5,15 +5,15 @@
  * @returns {void}
  */
 export function toggleClass(target, className) {
-  if(target instanceof HTMLElement) { 
-    target.classList.toggle(className);
-    return;
-  }
+	if(target instanceof HTMLElement) { 
+		target.classList.toggle(className);
+		return;
+	}
 
-  const element = document.querySelector(target);
-  if(element === null) return;
+	const element = document.querySelector(target);
+	if(element === null) return;
 
-  element.classList.toggle(className);
+	element.classList.toggle(className);
 }
 
 /**
@@ -24,21 +24,21 @@ export function toggleClass(target, className) {
  * @returns {void}
  */
 export function changeClass(target, className, value) {
-  if(target instanceof HTMLElement) {
-    if(value)
-      target.classList.add(className);
-    else
-      target.classList.remove(className);
-    return;
-  }
+	if(target instanceof HTMLElement) {
+		if(value)
+			target.classList.add(className);
+		else
+			target.classList.remove(className);
+		return;
+	}
 
-  const element = document.querySelector(target);
-  if(element === null) return;
+	const element = document.querySelector(target);
+	if(element === null) return;
 
-  if(value)
-    element.classList.add(className);
-  else
-    element.classList.remove(className);
+	if(value)
+		element.classList.add(className);
+	else
+		element.classList.remove(className);
 }
 
 /**
@@ -48,13 +48,13 @@ export function changeClass(target, className, value) {
  * @returns {boolean} true if element has class, false otherwise
  */
 export function hasClass(target, className) {
-  if(target instanceof HTMLElement)
-    return target.classList.contains(className);
+	if(target instanceof HTMLElement)
+		return target.classList.contains(className);
 
-  const element = document.querySelector(target);
-  if(element === null) return false;
+	const element = document.querySelector(target);
+	if(element === null) return false;
 
-  return element.classList.contains(className);
+	return element.classList.contains(className);
 }
 
 /**
@@ -63,9 +63,9 @@ export function hasClass(target, className) {
  * @returns {string} value of input or textarea
  */
 export function getInputContent(element) {
-  if(typeof element === 'string')
-    element = document.querySelector(element); 
-  return element.value.trim();
+	if(typeof element === 'string')
+		element = document.querySelector(element); 
+	return element.value.trim();
 }
 
 /**
@@ -74,9 +74,9 @@ export function getInputContent(element) {
  * @param {string} value 
  */
 export function setInputValue(element, value = '') {
-  if(typeof element === 'string')
-    element = document.querySelector(element);
-  element.value = value;
+	if(typeof element === 'string')
+		element = document.querySelector(element);
+	element.value = value;
 }
 
 /**
@@ -85,8 +85,8 @@ export function setInputValue(element, value = '') {
  * @returns {ParentNode|null}
  */
 export function getParentElement(element) {
-  if (!element || !element.parentNode) {
-    return null;
-  }
-  return element.parentNode;
+	if (!element || !element.parentNode) {
+		return null;
+	}
+	return element.parentNode;
 }

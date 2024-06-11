@@ -1,6 +1,6 @@
 <?php 
 
 enum Pages : string {
-  case LOGIN = 'login';
-  case REGISTER = 'register';
+	case LOGIN = 'login';
+	case REGISTER = 'register';
 }

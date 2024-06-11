@@ -1,30 +1,30 @@
 @import url("vars.css");
 
 #notes-container {
-  display: flex;
-  box-sizing: border-box;
-  width: 100%;
-  height: calc(100% - 60px);
-  padding: 15% 10%;
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	height: calc(100% - 60px);
+	padding: 15% 10%;
 
-  gap: 2em;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  justify-content: center;
-  overflow-y: hidden;
+	gap: 2em;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	justify-content: center;
+	overflow-y: hidden;
 }
 
 .note {
-  position: relative;
-  min-height: 280px;
-  height: 300px;
-  width: 270px;
-  background-color: var(--keepnote-pastel-blue);
-  border-radius: 12px;
-  box-shadow: 6px 6px 7px 2px rgba(0, 0, 0, 0.1);
+	position: relative;
+	min-height: 280px;
+	height: 300px;
+	width: 270px;
+	background-color: var(--keepnote-pastel-blue);
+	border-radius: 12px;
+	box-shadow: 6px 6px 7px 2px rgba(0, 0, 0, 0.1);
 
-  flex: 0 1 300px;
+	flex: 0 1 300px;
 }
 
 .note.pastel-blue { background-color: var(--keepnote-pastel-blue); }
@@ -34,103 +34,103 @@
 .note.pastel-green { background-color: var(--keepnote-pastel-green); }
 
 .note-title {
-  position: absolute;
-  max-width: 200px;
-  width: 100%;
-  top: .75em;
-  left: .75em;
+	position: absolute;
+	max-width: 200px;
+	width: 100%;
+	top: .75em;
+	left: .75em;
 
-  font-weight: 700;
+	font-weight: 700;
 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .note-options {
-  position:absolute;
-  right: .75em;
-  top: .75em;
+	position:absolute;
+	right: .75em;
+	top: .75em;
 
-  color: rgba(53, 73, 94, 0.7);
-  border-radius: 10px;
-  cursor: pointer;
+	color: rgba(53, 73, 94, 0.7);
+	border-radius: 10px;
+	cursor: pointer;
 }
 
 .note-options:hover {
-  background-color: #0000000f;
+	background-color: #0000000f;
 }
 
 .note-content {
-  position: absolute;
-  display: -webkit-box;
-  max-width: 230px;
-  height: fit-content;
-  width: 100%;
-  top: 2.25em;
-  left: .75em;
+	position: absolute;
+	display: -webkit-box;
+	max-width: 230px;
+	height: fit-content;
+	width: 100%;
+	top: 2.25em;
+	left: .75em;
 
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 7; /* start showing ellipsis when 3rd line is reached */
-  white-space: pre-wrap; /* let the text wrap preserving spaces */
-  overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 7; /* start showing ellipsis when 3rd line is reached */
+	white-space: pre-wrap; /* let the text wrap preserving spaces */
+	overflow: hidden;
 }
 
 .note-date {
-  position: absolute;
-  bottom: .75em;
-  right: .75em;
+	position: absolute;
+	bottom: .75em;
+	right: .75em;
 
-  font-size: .6em;
-  color: rgba(53, 73, 94, 0.7);
+	font-size: .6em;
+	color: rgba(53, 73, 94, 0.7);
 }
 
 .note-options-container {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  right: .5em;
-  top: 2em;
-  width: 50%;
-  height: 50%;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	right: .5em;
+	top: 2em;
+	width: 50%;
+	height: 50%;
 
-  border-radius: 15px;
-  box-shadow: var(--keepnote-card-box-shadow);
-  background-color: var(--keepnote-secondary);
-  align-items: center;
-  overflow: hidden;
-  opacity: 1;
-  visibility: visible;
+	border-radius: 15px;
+	box-shadow: var(--keepnote-card-box-shadow);
+	background-color: var(--keepnote-secondary);
+	align-items: center;
+	overflow: hidden;
+	opacity: 1;
+	visibility: visible;
 
-  transition: all 150ms ease-in-out;
+	transition: all 150ms ease-in-out;
 }
 
 .note-options-container.hidden {
-  opacity: 0;
-  visibility: hidden;
+	opacity: 0;
+	visibility: hidden;
 }
 
 .note-options-container .note-options-option {
-  display: flex;
-  flex: 1;
-  width: 100%;
+	display: flex;
+	flex: 1;
+	width: 100%;
 
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  user-select: none;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	user-select: none;
 }
 
 .note-options-container .note-options-option:hover {
-  color: var(--keepnote-accent);
-  background-color: var(--keepnote-bg);
+	color: var(--keepnote-accent);
+	background-color: var(--keepnote-bg);
 }
 
 
 @media screen and (max-width: 960px) {
-  #notes-container {
-    height: 100%;
-    overflow-x: scroll !important;
-  }
+	#notes-container {
+		height: 100%;
+		overflow-x: scroll !important;
+	}
 }

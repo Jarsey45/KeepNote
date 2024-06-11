@@ -12,7 +12,7 @@
 <body class="flex-row-center">
 	<div class="card card-login flex-column" style="width:80vw">
 		<h1 class="header">You are <span class="highlight">not</span> logged in</h1>
-    <div class="flex-row-center">
+		<div class="flex-row-center">
 			<div>
 				<a class="highlight" href="/login">Log in</a> or <a class="highlight" href="/register">Create an account</a></div>
 			</div>
