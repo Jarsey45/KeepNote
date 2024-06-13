@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use App\User;
 use App\Roles;
 
-final class userTest extends TestCase
+final class UserTest extends TestCase
 {
 	public function testCreatinguser() : void {
 		$user = (new User(-100))
