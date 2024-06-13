@@ -10,10 +10,10 @@ class User extends AbstractClassObject implements IClassObject {
 	#[PersistableProperty(true, true)]
 	private string $username;
 
-	#[PersistableProperty(true)]
+	#[PersistableProperty(true, true)]
 	private string $password;
 
-	#[PersistableProperty(true)]
+	#[PersistableProperty(true, true)]
 	private string $email;
 
 	#[PersistableProperty(true)]

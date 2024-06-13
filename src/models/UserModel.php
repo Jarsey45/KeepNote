@@ -29,7 +29,7 @@ class UserModel extends Model {
 
 	protected function getUpdateStatement() : string {
 		return <<<STMT
-			username = :username, email = :email, password = :password, id_role = :role, date_created = :date_created
+			username = :username, email = :email, password = :password
 		STMT;
 	}
 
