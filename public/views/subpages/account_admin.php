@@ -1,3 +1,6 @@
+<?php 
+namespace App;
+?>
 <script type="module" src="./public/scripts/accounts_manage.js"></script>
 
 <div id="app-content">

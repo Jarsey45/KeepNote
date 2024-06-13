@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 function getRandomPastelColor() : string {
 	$colors = [
 		"pastel-blue", "pastel-bland-pink",

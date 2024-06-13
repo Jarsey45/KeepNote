@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 require_once CLASSES_PATH . 'Note.php';
 require_once MODELS_PATH . 'AbstractModel.php';
 

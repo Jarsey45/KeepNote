@@ -1,4 +1,7 @@
 <?php
+
+namespace App;
+
 require_once './src/enums/Subpages.php';
 require_once './src/utils.php';
 require_once CLASSES_PATH . 'SharedNote.php';

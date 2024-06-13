@@ -1,4 +1,7 @@
 <?php
+
+namespace App;
+
 require_once CONTROLLERS_PATH . 'IController.php';
 
 class AppController implements Controller {
@@ -42,7 +45,7 @@ class AppController implements Controller {
 				$output = ob_get_clean();
 			}
 			
-			if($output === false) throw new Exception("Could not load template file");
+			if($output === false) throw new \Exception("Could not load template file");
 			
 			return $output;
 		} catch (\Exception $e) {

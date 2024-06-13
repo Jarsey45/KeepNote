@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 require_once './src/enums/Roles.php';
 require_once CLASSES_PATH . 'User.php';
 require_once MODELS_PATH . 'AbstractModel.php';

@@ -1,3 +1,6 @@
+<?php 
+namespace App;
+?>
 <script type="module" src="./public/scripts/navbar.js"></script>
 
 <div id="navbar-burger"><i class="fa fa-bars"></i></div>

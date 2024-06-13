@@ -1,5 +1,7 @@
 <?php 
 
+namespace App;
+
 require_once CONTROLLERS_PATH . 'AppController.php';
 require_once CONTROLLERS_PATH . 'NotesController.php';
 require_once CONTROLLERS_PATH . 'SharedNotesController.php';

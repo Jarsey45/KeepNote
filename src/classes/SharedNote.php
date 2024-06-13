@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 require_once CLASSES_PATH . 'IClassObject.php';
 require_once CLASSES_PATH . 'AbstractClassObject.php';
 

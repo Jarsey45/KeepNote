@@ -1,5 +1,7 @@
 <?php 
 
+namespace App;
+
 interface IDatabasePersistable {
 	/**
 	 * Gives array of insert bindings for specific Class

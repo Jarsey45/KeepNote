@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 enum Subpages : string {
 	case NOTES = 'notes';
 	case SHARED_NOTES = 'shared';

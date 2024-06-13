@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 require_once CLASSES_PATH . 'IClassObject.php';
 require_once CLASSES_PATH . 'AbstractClassObject.php';
 
@@ -64,9 +66,9 @@ class Note extends AbstractClassObject implements IClassObject {
 	//TODO: html content sanitization
 	public function getDateCreated() : string { 
 		try {
-			$dateObj = new DateTime($this->date_created);
+			$dateObj = new \DateTime($this->date_created);
 			return $dateObj->format('d M Y');
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 			return $this->date_created;
 		}
 	}

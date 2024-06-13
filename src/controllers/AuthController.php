@@ -1,5 +1,7 @@
 <?php 
 
+namespace App;
+
 require_once './src/enums/Pages.php';
 require_once MODELS_PATH . 'UserModel.php';
 

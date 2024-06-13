@@ -1,6 +1,10 @@
 <?php
 
+namespace App;
+
 require_once DB_PATH . 'DatabaseClientFactory.php';
+use PDO;
+
 
 abstract class Model {
 	protected string $tableName;

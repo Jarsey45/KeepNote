@@ -1,5 +1,7 @@
 <?php 
 
+namespace App;
+
 enum PostActions : string {
 	case INSERT = 'insert';
 	case DELETE = 'delete';

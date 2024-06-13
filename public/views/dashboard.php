@@ -1,4 +1,6 @@
 <?php 
+namespace App;
+
 $subpage = isset($subpage) ? Subpages::from($subpage) : Subpages::NOTES;
 ?>
 
