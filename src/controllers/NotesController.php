@@ -53,7 +53,7 @@ class NotesController extends AppController {
 
 	private function getNotes() : array {
 		if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) 
-			return $this->model->find(['id_owner' => (int) $_SESSION['user_id']]);
+			return $this->model->find(['id_owner' => (int) $_SESSION['user_id']], 'date_created');
 		return [];
 	}
 
