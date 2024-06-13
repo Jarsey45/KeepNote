@@ -1,3 +1,5 @@
+<script type="module" src="./public/scripts/account.js"></script>
+
 <div id="account-info-container" class="note">
 	<div class="note-row">
 		<div id="account-basic-info" class="note">
@@ -33,6 +35,7 @@
 			<div class="row-buttons">
 				<button type="button" class="button" id="reset-button">Reset Password</button>
 				<button type="button" class="button" id="delete-button">Delete Account</button>
+				<button type="button" class="button" id="logout-button">Log Out</button>
 			</div>
 		</div>
 	</div>

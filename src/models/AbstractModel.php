@@ -21,7 +21,7 @@ abstract class Model {
 		QUERY;
 
 		$stmt = $conn->prepare($sql);
-		return $stmt->execute($data->getDBQueryBindings());
+		return $stmt->execute($data->getDBUpdateBindings());
 	}
 
 	public function insert(IDatabasePersistable $data) : bool {
@@ -33,7 +33,7 @@ abstract class Model {
 		QUERY;
 
 		$stmt = $conn->prepare($sql);
-		return $stmt->execute($data->getDBQueryBindings());
+		return $stmt->execute($data->getDBInsertBindings());
 	}
 
 	// protected function validate(IClassObject $data) : bool {}
@@ -51,15 +51,17 @@ abstract class Model {
 		return $this->castToClass($stmt->fetchAll(PDO::FETCH_ASSOC));
 	}
 
-	public function find(array $conditions) : array {
+	public function find(array $conditions, string $orderBy = '') : array {
 		$conn = DatabaseClientFactory::getFactory()->getConnection();
 
 		$whereClause = $this->createPreparedWhereClause($conditions);
+		$orderBy = !empty($orderBy) ? "ORDER BY $orderBy DESC" : '';
 
 		$sql = <<<QUERY
 			SELECT *
 			FROM {$this->tableName}
 			WHERE $whereClause
+			$orderBy
 		QUERY;
 
 		$stmt = $conn->prepare($sql); //TODO: throw exception
@@ -82,6 +84,9 @@ abstract class Model {
 			return $stmt->execute();
 	}
 
+	public function exists(array $conditions) : bool {
+		return !empty($this->find($conditions));
+	}
 
 	protected function createPreparedWhereClause(array $conditions): string {
 		if (empty($conditions)) {

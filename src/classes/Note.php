@@ -8,10 +8,10 @@ class Note extends AbstractClassObject implements IClassObject {
 	#[PersistableProperty(true)]
 	private int $id_owner;
 
-	#[PersistableProperty(true)]
+	#[PersistableProperty(true, true)]
 	private string $title;
 
-	#[PersistableProperty(true)]
+	#[PersistableProperty(true, true)]
 	private string $content;
 
 	#[PersistableProperty(true)]
@@ -69,10 +69,5 @@ class Note extends AbstractClassObject implements IClassObject {
 		} catch (Exception $e) {
 			return $this->date_created;
 		}
-	}
-
-	public function getDBQueryBindings(): array
-	{
-		return parent::getDBQueryBindings();
 	}
 }

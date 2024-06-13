@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./public/css/style.css">
+	<link rel="stylesheet" href="./public/css/toast.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
@@ -21,7 +22,7 @@
 		</form>
 	</div>
 	<?php 
-	if(isset($message) && !empty($messages))
+	if(isset($messages) && !empty($messages))
 		include VIEWS_PATH . 'shared/toasts.php'
 	?>
 </body>

@@ -23,6 +23,7 @@ class NotesController extends AppController {
 	private function handlePost() {
 		$request = $this->parseJSONRequest();
 
+		//TODO: handle ::from() exception
 		$action = isset($request['action']) ? PostActions::from($request['action']) : PostActions::NONE;
 		$data = $request['data'];
 		$headers = [];
@@ -63,7 +64,10 @@ class NotesController extends AppController {
 	}
 
 	private function updateNote($data) : bool {
-		$updatedNote = (new Note($data['id']))
+		if (!isset($data['id']) || !$this->model->isUserOwner((int) $data['id'], $_SESSION['user_id']))
+			return false;
+
+		$updatedNote = (new Note((int) $data['id']))
 			->setTitle($data['title'])
 			->setContent($data['content']);
 		return $this->model->update($updatedNote);

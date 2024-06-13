@@ -12,14 +12,12 @@ class UserModel extends Model {
 		$resultArray = [];
 
 		foreach($data as $el) {
-			$resultArray[] = new User(
-				$el['id'], 
-				$el['username'], 
-				$el['password'], 
-				$el['email'], 
-				Roles::from($el['id_role']), 
-				$el['date_created']
-			);
+			$resultArray[] = (new User($el['id']))
+				->setUsername($el['username'])
+				->setPassword($el['password'])
+				->setEmail($el['email'])
+				->setRole(Roles::from($el['id_role']))
+				->setDateCreated($el['date_created']);
 		}
 
 		return $resultArray;
@@ -29,14 +27,14 @@ class UserModel extends Model {
 
 	protected function getUpdateStatement() : string {
 		return <<<STMT
-			username = :username, email = :email, password = :password, id_role = :id_role, date_created = :date_created
+			username = :username, email = :email, password = :password, id_role = :role, date_created = :date_created
 		STMT;
 	}
 
 	protected function getInsertStatement() : string {
 		return <<<STMT
-			(username, email, password, id_role, date_created)
-			VALUES (:username, :email, :password, :id_role, :date_created)
+			(username, email, password, id_role)
+			VALUES (:username, :email, :password, :role)
 		STMT;
 	}
 }

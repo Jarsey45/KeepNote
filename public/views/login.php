@@ -22,7 +22,7 @@
 		</form>
 	</div>
 	<?php 
-	if(isset($message) && !empty($messages))
+	if(isset($messages) && !empty($messages))
 		include VIEWS_PATH . 'shared/toasts.php'
 	?>
 </body>

@@ -5,7 +5,7 @@ require_once CLASSES_PATH . 'AbstractClassObject.php';
 
 class User extends AbstractClassObject implements IClassObject {
 
-	#[PersistableProperty(true)]
+	#[PersistableProperty(true, true)]
 	private string $username;
 
 	#[PersistableProperty(true)]
@@ -19,13 +19,33 @@ class User extends AbstractClassObject implements IClassObject {
 
 	private string $date_created;
 
-	public function __construct(int $id, string $username, string $password, string $email, Roles $role, string $date_created) {
+	public function __construct(int $id) {
 		$this->id = $id;
+	}
+
+	public function setUsername(string $username) : self {
 		$this->username = $username;
+		return $this;
+	}
+
+	public function setPassword(string $password) : self {
 		$this->password = $password;
+		return $this;
+	}
+
+	public function setEmail(string $email) : self {
 		$this->email = $email;
+		return $this;
+	}
+
+	public function setRole(Roles $role) : self {
 		$this->role = $role;
+		return $this;
+	}
+
+	public function setDateCreated(string $date_created) : self {
 		$this->date_created = $date_created;
+		return $this;
 	}
 
 	//TODO: html content sanitization

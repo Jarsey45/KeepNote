@@ -3,6 +3,7 @@
 require_once CLASSES_PATH . 'Note.php';
 require_once MODELS_PATH . 'AbstractModel.php';
 
+// I really don't like this class implementation model
 class SharedNoteModel extends Model {
 
 	protected string $tableName = 'kn_shared';
@@ -15,19 +16,26 @@ class SharedNoteModel extends Model {
 	}
 
 	#[Override]
-	public function find(array $conditions) : array {
+	public function insert(IDatabasePersistable $data) : bool {
+		if(!($data instanceof SharedNote)) return false;
+
+		$user = $this->userModel->find(['email' => $data->getEmail()]);
+		if(empty($user) || !($user[0] instanceof User)) return false;
+
+		$data->setIdSharedUser($user[0]->getId());
+
+		if($this->exists(['id_note' => $data->getIdNote(), 'id_shared_user' => $data->getIdSharedUser()]))
+			return false;
+
 		$conn = DatabaseClientFactory::getFactory()->getConnection();
 
 		$sql = <<<QUERY
-			SELECT *
-			FROM {$this->tableName}
-			WHERE id_shared_user = :id_shared_user;
+			INSERT INTO {$this->tableName}
+			{$this->getInsertStatement()}
 		QUERY;
 
-		$stmt = $conn->prepare($sql); //TODO: throw exception
-		$stmt->execute($conditions);
-
-		return $this->castToClass($stmt->fetchAll(PDO::FETCH_ASSOC));
+		$stmt = $conn->prepare($sql);
+		return $stmt->execute($data->getDBInsertBindings());
 	}
 
 	protected function castToClass(array $data) : array {
@@ -35,9 +43,11 @@ class SharedNoteModel extends Model {
 
 		foreach($data as $el) {
 			$notes = $this->noteModel->find(['id' => $el['id_note']]);
+			if(empty($notes)) continue;
+
 			$note = $notes[0];
 			$user;
-
+			
 			if($note instanceof Note)
 				$user = $this->userModel->find(['id' => $note->getOwner()]);
 
@@ -52,14 +62,14 @@ class SharedNoteModel extends Model {
 
 	protected function getUpdateStatement() : string {
 		return <<<STMT
-			title = :title, content = :content
+			id_note = :id_note, id_shared_user = :id_shared_user
 		STMT;
 	}
 
 	protected function getInsertStatement() : string {
 		return <<<STMT
-			(id_owner, title, content, color, date_created)
-			VALUES (:id_owner, :title, :content, :color, Now());
+			(id_note, id_shared_user)
+			VALUES (:id_note, :id_shared_user);
 		STMT;
 	}
 }

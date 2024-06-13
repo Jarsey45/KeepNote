@@ -144,10 +144,134 @@
 	background-color: var(--keepnote-bg);
 }
 
+#note-edit-container, #note-share-container {
+	display: flex;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	justify-content: center;
+	align-items: center;
+	visibility: visible;
+}
+
+#note-edit-container.hidden, #note-edit-container.hidden #note-edit,
+#note-share-container.hidden, #note-share-container.hidden #note-share {
+	opacity: 0;
+	visibility: hidden;
+}
+
+#note-edit-container #note-edit-tint,
+#note-share-container #note-share-tint {
+	position: absolute;
+	display: block;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.25);
+
+	transition: opacity 250ms ease-in-out;
+
+	overflow: hidden;
+	z-index: 3;
+}
+
+#note-edit-container #note-edit,
+#note-share-container #note-share {
+	position: relative;
+	width: 14em;
+	height: 16em;
+
+	font-family: var(--keepnote-text-family);
+
+	padding: 1em;
+	background-color: var(--keepnote-pastel-seagreen);
+	border-radius: 12px;
+	box-shadow: 6px 6px 7px 2px rgba(0, 0, 0, 0.2);
+	transition: all 250ms cubic-bezier(0.96, 0.01, 0.06, 0.97);
+
+	z-index: 10;
+}
+
+#note-share-container #note-share {
+	height: auto;
+	width: auto;
+}
+
+#note-edit #note-edit-title,
+#note-share #note-share-email {
+	height: 10%;
+	font-weight: 700;
+	font-size: 1.25em;
+	width: 100%;
+}
+
+#note-share #note-share-email {
+	height: 100%;
+}
+
+#note-edit #note-edit-content {
+	height: 90%;
+	margin: 0 auto;
+	font-size: .75em;
+	width: 100%;
+
+	overflow: hidden;
+	overflow-wrap: break-word;
+}
+
+#note-edit #note-edit-content, #note-edit #note-edit-title,
+#note-share #note-share-email {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	background-image: none;
+	outline: none;
+
+	color: var(--keepnote-text-dark);
+	font-family: inherit;
+
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+#note-edit #note-edit-content:focus, #note-edit #note-edit-title:focus,
+#note-share #note-share-email:focus {
+	outline: none;
+}
+
+#note-edit #note-edit-content::placeholder, #note-edit #note-edit-title::placeholder,
+#note-share #note-share-email::placeholder {
+	color: var(--keepnote-text-grey);
+}
+
+#note-edit-submit-button,
+#note-share-submit-button {
+	position: absolute;
+	width: 3em;
+	height: 3em;
+	bottom: 0em;
+	right: -4em;
+
+	background-color: var(--keepnote-secondary);
+	border-radius: 50px;
+	box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.25);
+
+	cursor: pointer;
+	user-select: none;
+}
+
 
 @media screen and (max-width: 960px) {
 	#notes-container {
 		height: 100%;
 		overflow-x: scroll !important;
+	}
+
+	#note-edit-submit-button {
+		bottom: -4em;
+    left: calc(50% - 1.5em);
 	}
 }

@@ -2,7 +2,12 @@
 
 interface IDatabasePersistable {
 	/**
-	 * Gives array of bindings for specific Class
+	 * Gives array of insert bindings for specific Class
 	 */
-	public function getDBQueryBindings() : array;
+	public function getDBInsertBindings() : array;
+
+	/**
+	 * Gives array of update bindings for specific Class
+	 */
+	public function getDBUpdateBindings() : array;
 }

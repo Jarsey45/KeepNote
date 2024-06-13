@@ -13,7 +13,7 @@ class AccountController extends AppController {
 		if(!$this->isLoggedIn()) return;
 		if($this->isPost()) return $this->handlePost();
 
-		$subpage = Subpages::from($handler) ?? Subpages::ACCOUNT_USER;
+		$subpage = $_SESSION['user_role'] === Roles::ADMIN ? (Subpages::from($handler) ?? Subpages::ACCOUNT_USER) : Subpages::ACCOUNT_USER;
 		$variables['subpage'] = $subpage->value;
 		
 		switch($subpage) {
@@ -44,6 +44,10 @@ class AccountController extends AppController {
 		switch($action) {
 			case PostActions::DELETE:
 				$response = $this->deleteAccount($data);
+				break;
+			case PostActions::LOG_OUT:
+				session_destroy();
+				$response = true;
 				break;
 			default:
 				$response = "No action available"; //TODO: send some header

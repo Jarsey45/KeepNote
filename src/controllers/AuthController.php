@@ -67,9 +67,41 @@ class AuthController extends AppController {
 			die();
 		}
 
-		$user = new User();
+		$userExists = $this->model->find(['email' => $email]);
 
+		if(!empty($userExists)) {
+			$this->render(Pages::REGISTER->value, ['messages' => ['User with email already exists']]);
+			die();
+		}
 
+		$username = explode('@', $email)[0];
+
+		$newUser = (new User(-1))
+			->setUsername($username)
+			->setEmail($email)
+			->setRole(Roles::USER)
+			->setPassword($password);
+
+		$isInserted = $this->model->insert($newUser);
+
+		if(!$isInserted) {
+			$this->render(Pages::REGISTER->value, ['messages' => ['Could not create new user']]);
+			die();
+		}
+
+		$insertedUser = $this->model->find(['email' => $email]);
+	
+		if(empty($insertedUser) || !($insertedUser[0] instanceof User)) {
+			$this->render(Pages::LOGIN->value, ['messages' => ['Could not login in, try again!']]);
+			die();
+		}
+
+		$user = $insertedUser[0];
+
+		session_start();
+		$_SESSION['logged_in'] = true;
+		$_SESSION['user_id'] = $user->getId();
+		$_SESSION['user_role'] = $user->getRole();
 
 		header("Location: http://{$_SERVER['HTTP_HOST']}/" . Subpages::NOTES->value);
 		die();

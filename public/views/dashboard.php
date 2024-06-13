@@ -10,6 +10,7 @@ $subpage = isset($subpage) ? Subpages::from($subpage) : Subpages::NOTES;
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="<?=STYLES_PATH?>style.css">
 		<link rel="stylesheet" href="<?=STYLES_PATH?>nav.css">
+		<link rel="stylesheet" href="<?=STYLES_PATH?>toast.css">
 		<?php
 			switch($subpage) {
 				case Subpages::NOTES:
@@ -34,7 +35,10 @@ $subpage = isset($subpage) ? Subpages::from($subpage) : Subpages::NOTES;
 	<body>
 		<?php include VIEWS_PATH . 'shared/navbar.php';?>
 		<?php include VIEWS_PATH . "subpages/$subpage->value.php"; ?>
-
+		<?php 
+		if(isset($messages) && !empty($messages))
+			include VIEWS_PATH . 'shared/toasts.php'
+		?>
 	</body>
 
 </html>

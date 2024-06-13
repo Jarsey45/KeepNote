@@ -1,78 +1,105 @@
 @import url("vars.css");
 
 #account-info-container {
-  position: absolute;
-  height: 80%;
-  width: 85%;
-  left: calc(15% / 2);
-  bottom:  -5%;
+	position: absolute;
+	height: 80%;
+	width: 85%;
+	left: calc(15% / 2);
+	bottom:  -5%;
 
-  background-color: var(--keepnote-secondary);
+	background-color: var(--keepnote-secondary);
 }
 
 .note-row {
-  display: flex;
-  height: 45%;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  gap: 2em;
-  padding: 2em 2em 0 2em;
+	display: flex;
+	height: 45%;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	gap: 2em;
+	padding: 2em 2em 0 2em;
 }
 
 #account-basic-info, #account-share-stats, #credits-help {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  gap: 2em;
-  padding: 1em;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	gap: 2em;
+	padding: 1em;
 }
 
 #account-basic-info {
-  background-color: var(--keepnote-pastel-blue);
+	background-color: var(--keepnote-pastel-blue);
 }
 
 #account-share-stats {
-  background-color: var(--keepnote-pastel-pink)
+	background-color: var(--keepnote-pastel-pink)
 }
 
 #credits-help {
-  background-color: var(--keepnote-pastel-green);
+	background-color: var(--keepnote-pastel-green);
 }
 
 #credits-help .row-buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 4em;
+	display: flex;
+	flex-direction: row;
+	gap: 4em;
 }
 
 .note .title, .note .subtitle {
-  font-weight: 700;
-  font-size: 1em;
-  color: var(--keepnote-text-dark);
+	font-weight: 700;
+	font-size: 1em;
+	color: var(--keepnote-text-dark);
 }
 
 .note .content {
-  color: var(--keepnote-text-grey);
+	color: var(--keepnote-text-grey);
 }
 
 .row-buttons .button {
-  flex: 1;
-  padding: 1em;
-  border: none;
-  font-family: var(--keepnote-text-family);
-  font-size: 1em;
-  border-radius: 50px;
-  box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, 0.25);
-  cursor: pointer;
+	flex: 1;
+	padding: 1em;
+	border: none;
+	font-family: var(--keepnote-text-family);
+	font-size: 1em;
+	border-radius: 50px;
+	box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, 0.25);
+	cursor: pointer;
 }
 
 #delete-button.button {
-  background-color: var(--keepnote-error-color);
+	background-color: var(--keepnote-error-color);
 }
 
 #reset-button.button {
-  background-color: var(--keepnote-pastel-yellow);
+	background-color: var(--keepnote-pastel-yellow);
+}
+
+#logout-button.button {
+	background-color: var(--keepnote-pastel-blue);
+}
+
+@media screen and (max-width: 960px) {
+	#account-info-container {
+		position: relative;
+		height: 90%;
+		overflow-y: scroll;
+		font-size: .9em;
+	}
+	
+	.note-row {
+		height: auto;
+		flex-direction: column;
+	}
+
+	.note-row:last-child {
+		padding: 2em;
+	}
+
+	#credits-help .row-buttons {
+		flex-direction: column;
+		gap: 2em;
+	}
 }
